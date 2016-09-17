@@ -15,13 +15,18 @@ class Post extends CI_Controller {
 		
 	}
 
+	/**
+	 * do_post() handles the form that creates a status message
+	 * 
+	 * redirects to 'home' when done, with appropriate flashdata message
+	 **/
 	public function do_post()
 	{
-		$formdata = new stdClass();
-		$data = new stdClass();
-		$formdata->user_id = $_SESSION['user_id'];
-		$formdata->content = $this->input->post('content');
-		$post = $this->posts_model->create($formdata);
+		$formdata = new stdClass(); // form data object
+		$data = new stdClass(); // view objects
+		$formdata->user_id = $_SESSION['user_id']; // get user_id from session
+		$formdata->content = $this->input->post('content'); // get status message content from <textarea name="content">
+		$post = $this->posts_model->create($formdata); // save the data
 
 		if( $post ){
 			$data->message = 'Status posted!';
@@ -30,8 +35,13 @@ class Post extends CI_Controller {
 			$data->message = $this->db->error_message;
 			$_SESSION['post_status_message'] = array('error', $data);
 		}
-
-		$this->session->mark_as_flash('post_status_message');
+		
+		/**
+		 * post_status_message is an array with two values:
+		 *	[0] -> status (success or error)
+		 *  [1] -> status message
+		 **/
+		$this->session->mark_as_flash('post_status_message'); // mark the post_status_message session as temporary
 
 		redirect(site_url('home'));
 

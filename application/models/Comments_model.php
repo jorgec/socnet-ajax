@@ -1,15 +1,15 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Posts_model extends CI_Model {
+class Comments_model extends CI_Model {
 
-	protected $tbl = 'posts';
+	protected $tbl = 'comments';
 	protected $pk = 'id';
 
 	public function __construct()
 	{
 		parent::__construct();
 		$this->load->model('users_model');
-		$this->load->model('comments_model');
+		$this->load->model('posts_model');
 	}
 
 	// getters
@@ -46,12 +46,22 @@ class Posts_model extends CI_Model {
 		$this->db->limit = array(0, 100);
 		$this->db->order_by( 'created', 'DESC' );
 		$data->posts = $this->db->get( $this->tbl )->result();
-		foreach( $data->posts as $k => $post ){
-			$data->posts[$k]->comments = $this->comments_model->get_many_by_post($post->id);
-		}
 		$data->user = $this->users_model->get($user_id)->row();
 		return $data;
-	}	
+	}
+
+	public function get_many_by_post( $post_id )
+	{
+		$comments = new stdClass();
+		$this->db->where( array('post_id' => $post_id));
+		$this->db->limit = array(0, 100);
+		$this->db->order_by( 'created', 'ASC' );
+		$comments = $this->db->get( $this->tbl )->result();
+		foreach( $comments as $k => $c ){
+			$comments[$k]->user = $this->users_model->get($c->user_id)->row();
+		}
+		return $comments;
+	}
 
 	/**
 	 * get one based on $conditions

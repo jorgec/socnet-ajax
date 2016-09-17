@@ -21,9 +21,10 @@ class Home extends CI_Controller {
 
 		// form handlers
 		$data->post_handler = site_url('post/do_post');
+		$data->comment_handler = site_url('comment/do_comment');
 
 		// other data
-		$data->posts = $this->posts_model->get_many( array('user_id' => $this->user_id), array(0, 10), array('created', 'DESC'));
+		$data->posts = $this->posts_model->get_many_by_user($this->user_id);
 
 		$this->load->view('home/index', $data);
 	}

@@ -1,3 +1,16 @@
+<?php
+/**
+ * we'll split this file into sections:
+ * - header
+ * - body
+ * --- left sidebar
+ * --- content
+ * ------ process result message (success or error)
+ * ------ status form
+ * ------ list of current user's status messages
+ * --- right sidebar
+ * - footer
+ **/?>
 <?php $this->load->view('includes/header');?>
 <div class="container">
 	<div class="row">
