@@ -7,6 +7,13 @@
 		background-color: $heading-highlight;		
 		margin: 0 15px;
 		padding: 7px 10px;
+		a, a:active, a:visited{
+			color: $light-blue;
+			font-weight: bold;
+		}
+		a:hover{
+			color: white;
+		}
 	}
 	.post-heading:after{
 		content: " ";

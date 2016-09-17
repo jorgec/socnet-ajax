@@ -5,7 +5,7 @@
 			<div class="row">
 				<div class="post-heading">
 					<div class="post-author col-xs-6">
-						<?php echo $posts->user->username;?>
+						<a href="<?php echo site_url('user/' . $posts->user->id);?>"><?php echo $posts->user->username;?></a>
 					</div>
 					<div class="post-date col-xs-6">
 						<?php 
@@ -21,7 +21,7 @@
 				<?php if( $post->comments ):?>
 					<?php foreach( $post->comments as $comment ):?>
 						<div class="comment">
-							<strong><?php echo $comment->user->username;?></strong> <?php echo $comment->comment;?>
+							<strong><a href="<?php echo site_url('user/' . $comment->user->id);?>"><?php echo $comment->user->username;?></a></strong> <?php echo $comment->comment;?>
 							<br>
 							<span class="comment-ts">
 								<?php

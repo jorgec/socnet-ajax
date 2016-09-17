@@ -5,6 +5,11 @@
   background-color: #3097C7;
   margin: 0 15px;
   padding: 7px 10px; }
+  .post .post-heading a, .post .post-heading a:active, .post .post-heading a:visited {
+    color: #DAF4F9;
+    font-weight: bold; }
+  .post .post-heading a:hover {
+    color: white; }
 .post .post-heading:after {
   content: " ";
   display: block;
