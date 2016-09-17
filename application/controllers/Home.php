@@ -2,11 +2,15 @@
 
 class Home extends CI_Controller {
 
+	private $user_id = FALSE;
+
 	public function __construct()
 	{
 		parent::__construct();
 		$this->load->model('users_model');
+		$this->load->model('posts_model');
 		if( ! $this->users_model->is_logged_in() ) redirect(site_url('user/login'));
+		$this->user_id = $_SESSION['user_id'];
 	}
 
 	public function index()
@@ -14,7 +18,14 @@ class Home extends CI_Controller {
 		
 		$data = new stdClass();
 		$data->page_title = 'Home';
-		$this->load->view('home/index');
+
+		// form handlers
+		$data->post_handler = site_url('post/do_post');
+
+		// other data
+		$data->posts = $this->posts_model->get_many( array('user_id' => $this->user_id), array(0, 10), array('created', 'DESC'));
+
+		$this->load->view('home/index', $data);
 	}
 
 	public function browse()

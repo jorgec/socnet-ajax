@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AACA,KAAK;EACJ,MAAM,EAAE,MAAM;EACd,OAAO,EAAE,IAAI;EACb,MAAM,EAAE,iBAAe;EACvB,aAAa,EAAE,GAAG;EAClB,KAAK,ECJC,OAAO;EDKb,UAAU,EAAE,iCAA+B;EAC3C,gBAAU;IACT,SAAS,EAAE,KAAK;IAChB,KAAK,ECTK,OAAO;IDUjB,UAAU,EAAE,KAAK;IACjB,aAAa,EAAE,iBAAe;EAE/B,mBAAa;IACZ,MAAM,EAAE,MAAM",
+"sources": ["posts.scss","../variables/colors.scss"],
+"names": [],
+"file": "posts.css"
+}

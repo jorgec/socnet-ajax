@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.13.1deb1
+-- version 4.6.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Sep 07, 2016 at 08:41 AM
--- Server version: 5.6.31-0ubuntu0.15.10.1
--- PHP Version: 5.6.11-1ubuntu3.4
+-- Host: localhost:3306
+-- Generation Time: Sep 17, 2016 at 03:23 AM
+-- Server version: 5.6.30
+-- PHP Version: 5.6.22
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,24 +23,42 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `friends`
+--
+
+CREATE TABLE `friends` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `user_1` int(11) UNSIGNED NOT NULL,
+  `user_2` int(11) UNSIGNED NOT NULL,
+  `deleted` tinyint(1) NOT NULL DEFAULT '0',
+  `created` datetime NOT NULL,
+  `updated` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `posts`
 --
 
-CREATE TABLE IF NOT EXISTS `posts` (
-  `id` int(11) unsigned NOT NULL,
-  `user_id` int(11) unsigned NOT NULL,
+CREATE TABLE `posts` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `user_id` int(11) UNSIGNED NOT NULL,
   `content` text NOT NULL,
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
-  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `posts`
 --
 
 INSERT INTO `posts` (`id`, `user_id`, `content`, `deleted`, `created`, `updated`) VALUES
-(1, 2, 'dear bajerjer si albert ini hi friend', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(2, 2, 'test', 0, '2016-09-17 02:15:26', '2016-09-17 17:15:26'),
+(3, 2, 'test', 0, '2016-09-17 02:43:23', '2016-09-17 17:43:23'),
+(4, 2, 'another test', 0, '2016-09-17 02:43:51', '2016-09-17 17:43:51'),
+(5, 2, 'new test', 0, '2016-09-17 03:17:09', '2016-09-17 18:17:09');
 
 -- --------------------------------------------------------
 
@@ -48,7 +66,7 @@ INSERT INTO `posts` (`id`, `user_id`, `content`, `deleted`, `created`, `updated`
 -- Table structure for table `users`
 --
 
-CREATE TABLE IF NOT EXISTS `users` (
+CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(128) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -58,21 +76,27 @@ CREATE TABLE IF NOT EXISTS `users` (
   `lastname` varchar(45) DEFAULT NULL,
   `gender` enum('Male','Female') NOT NULL,
   `date_of_birth` date DEFAULT NULL,
-  `created` timestamp NULL DEFAULT NULL,
-  `updated` timestamp NULL DEFAULT NULL,
-  `deleted` tinyint(4) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `created` datetime DEFAULT NULL,
+  `updated` datetime DEFAULT NULL,
+  `deleted` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `firstname`, `middlename`, `lastname`, `gender`, `date_of_birth`, `created`, `updated`, `deleted`) VALUES
-(2, 'abaw', '1adbb3178591fd5bb0c248518f39bf6d', 'abaw@abaw.com', NULL, NULL, NULL, 'Male', NULL, NULL, NULL, 0);
+(2, 'test', '1adbb3178591fd5bb0c248518f39bf6d', 'abaw@abaw.com', NULL, NULL, NULL, 'Male', NULL, NULL, NULL, 0);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `friends`
+--
+ALTER TABLE `friends`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `posts`
@@ -91,15 +115,20 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `friends`
+--
+ALTER TABLE `friends`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

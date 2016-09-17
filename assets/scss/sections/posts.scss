@@ -1,0 +1,18 @@
+@import '../variables/colors';
+.post{
+	margin: 20px 0;
+	padding: 20px;
+	border: 1px solid $gray;
+	border-radius: 5px;
+	color: $text;
+	box-shadow: 0px 0px 5px 0 hsla(0,0%,0%,.15);
+	.post-date{
+		font-size: .85em;
+		color: $dark-gray;
+		text-align: right;
+		border-bottom: 1px solid $gray;
+	}
+	.post-content{
+		margin: 10px 0;
+	}
+}

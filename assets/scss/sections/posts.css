@@ -1,6 +1,3 @@
-.navbar {
-  border-radius: 0; }
-
 .post {
   margin: 20px 0;
   padding: 20px;
@@ -16,22 +13,4 @@
   .post .post-content {
     margin: 10px 0; }
 
-.form-horizontal:after {
-  content: " ";
-  display: block;
-  clear: both; }
-
-.section {
-  clear: both; }
-
-.section:before {
-  content: " ";
-  display: block;
-  clear: both; }
-
-.section:after {
-  content: " ";
-  display: block;
-  clear: both; }
-
-/*# sourceMappingURL=design.css.map */
+/*# sourceMappingURL=posts.css.map */
