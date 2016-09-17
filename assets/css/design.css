@@ -37,6 +37,11 @@
 .post .comment-form {
   margin: 10px 30px; }
 
+.process-spinner {
+  background: url(../images/ring.gif) no-repeat center center;
+  min-height: 160px;
+  min-width: 160px; }
+
 .navbar {
   border-radius: 0; }
 

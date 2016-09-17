@@ -47,6 +47,27 @@ class Post extends CI_Controller {
 
 	}
 
+	public function ajax_do_post()
+	{
+		$formdata = new stdClass(); // form data object
+		$data = new stdClass(); // view objects
+		$formdata->user_id = $_SESSION['user_id']; // get user_id from session
+		$formdata->content = $this->input->post('content'); // get status message content from <textarea name="content">
+		$post = $this->posts_model->create($formdata); // save the data
+
+		if( $post ){
+			$data->message = 'Status posted!';
+			$data->status = TRUE;
+			$post_id = $this->db->insert_id();
+			$data->post = $this->posts_model->get($post_id)->row();
+		}else{
+			$data->message = $this->db->error_message;
+			$data->status = FALSE;
+		}
+		header('Content-Type: application/json');
+		echo json_encode($data);
+	}
+
 }
 
 /* End of file Post.php */

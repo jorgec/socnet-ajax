@@ -1,5 +1,6 @@
 <?php if( $posts ):?>
-	<div class="section">
+	<div class="section" id="status-messages">
+		<div id="status-updates"></div>
 	<?php foreach( $posts->posts as $post ):?>
 		<div class="post box-container" id="post-<?php echo $post->id;?>">
 			<div class="row">

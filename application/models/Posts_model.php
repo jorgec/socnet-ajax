@@ -20,6 +20,16 @@ class Posts_model extends CI_Model {
 		return $this->db->get( $this->tbl );
 	}
 
+	public function get_post( $id )
+	{
+		$data = new stdClass();
+		$this->db->where( array('id' => $id));
+		$data->post = $this->db->get( $this->tbl )->row();
+		$data->post->comments = $this->comments_model->get_many_by_post($post->id);
+		$data->post->user = $this->users_model->get($data->post->user_id)->row();
+		return $data;		
+	}
+
 	/**
 	 * get_many will return rows based on:
 	 * $conditions - see codeigniter db->where()

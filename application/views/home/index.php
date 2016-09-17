@@ -27,7 +27,7 @@
 			<?php endif;?>
 
 			<?php $this->load->view('home/partials/post_status_form');?>
-
+			<div class="process-spinner hide" id="post-status-form-spinner"></div>
 			<?php $this->load->view('home/partials/status_messages');?>
 
 		</div>

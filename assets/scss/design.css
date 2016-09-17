@@ -1,4 +1,77 @@
+.post .post-heading {
+  font-size: .85em;
+  color: white;
+  border-bottom: 1px solid #DCE9ED;
+  background-color: #3097C7;
+  margin: 0 15px;
+  padding: 7px 10px; }
+  .post .post-heading a, .post .post-heading a:active, .post .post-heading a:visited {
+    color: #DAF4F9;
+    font-weight: bold; }
+  .post .post-heading a:hover {
+    color: white; }
+.post .post-heading:after {
+  content: " ";
+  display: block;
+  clear: both; }
+.post .post-date {
+  text-align: right;
+  padding: 0; }
+.post .post-author {
+  padding: 0; }
+.post .post-content {
+  padding: 10px; }
+.post .comments {
+  background-color: #F4F7F9;
+  border-top: 1px solid #F0F0F0;
+  border-bottom: 1px solid #F0F0F0;
+  padding: 10px;
+  margin: 10px 0; }
+  .post .comments .comment {
+    margin: 0 10px 10px 10px;
+    padding: 0 0 5px 0;
+    border-bottom: 1px solid #DCE9ED; }
+    .post .comments .comment .comment-ts {
+      font-size: .85em;
+      color: #CFCFCF; }
+.post .comment-form {
+  margin: 10px 30px; }
+
+.process-spinner {
+  background: url(../images/gears.gif) no-repeat center center;
+  min-height: 160px;
+  min-width: 160px; }
+
 .navbar {
   border-radius: 0; }
+
+body {
+  background-color: #F0F0F0; }
+
+.form-horizontal:after {
+  content: " ";
+  display: block;
+  clear: both; }
+
+.section {
+  clear: both; }
+
+.section:before {
+  content: " ";
+  display: block;
+  clear: both; }
+
+.section:after {
+  content: " ";
+  display: block;
+  clear: both; }
+
+.box-container {
+  margin: 0 0 10px 0;
+  border: 1px solid #CFCFCF;
+  border-radius: 1px;
+  color: #1D1E1F;
+  box-shadow: 0px 0px 5px 0 rgba(0, 0, 0, 0.15);
+  background-color: white; }
 
 /*# sourceMappingURL=design.css.map */

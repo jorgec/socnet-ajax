@@ -20,11 +20,16 @@ class Home extends CI_Controller {
 		$data->page_title = 'Home';
 
 		// form handlers
-		$data->post_handler = site_url('post/do_post');
+		$data->post_handler = site_url('post/ajax_do_post');
 		$data->comment_handler = site_url('comment/do_comment');
 
 		// other data
 		$data->posts = $this->posts_model->get_many_by_user($this->user_id);
+
+		// javascripts
+		$data->js = array(
+			base_url() . 'assets/js/ajax/status.js'
+		);
 
 		$this->load->view('home/index', $data);
 	}
